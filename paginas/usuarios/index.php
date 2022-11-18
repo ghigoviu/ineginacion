@@ -92,7 +92,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>  
                 <div class="form-group">
                     <label for="rol" class="col-form-label">Rol:</label>
-                    <input type="text" class="form-control" id="rol" name="rol">
+                    <select class="form-control" id="rol" name="rol">
+                        <option value="Censador">Censador</option>
+                        <option value="Coordinador">Coordinador</option>
+                    </select>
                 </div> 
                 <!--
                 <div class="form-group">
@@ -137,8 +140,11 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>  
                 <div class="form-group">
                     <label for="rol" class="col-form-label">Rol:</label>
-                    <input type="text" class="form-control" id="rol" name="rol">
-                </div> 
+                    <select class="form-control" id="rol" name="rol">
+                        <option value="Censador">Censador</option>
+                        <option value="Coordinador">Coordinador</option>
+                    </select>       
+                </div>
                 <div class="form-group">
                     <label for="password" class="col-form-label">Password:</label>
                     <input type="password" class="form-control" id="password" name="password">

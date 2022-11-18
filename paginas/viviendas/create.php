@@ -16,9 +16,12 @@
     $extension = (isset($_POST['extension'])) ? $_POST['extension'] : '';
     $habitantes = (isset($_POST['habitantes'])) ? $_POST['habitantes'] : '';
     $jardin = (isset($_POST['jardin'])) ? $_POST['jardin'] : '';
+    $colonia = (isset($_POST['colonia'])) ? $_POST['colonia'] : '';
 
-    $consulta = "INSERT INTO viviendas (direccion, cuartos, banos, agua, luz, internet, televisores, material_techo, material_piso, tipo_vivienda, metros_cuadrados, habitantes, jardin) VALUES  ".
-        "('$direccion', '$cuartos', '$banos', '$agua', '$luz', '$internet', '$televisores', '$techo', '$piso', '$tipo', '$extension', '$habitantes', '$jardin') ";			
+    $consulta = "INSERT INTO viviendas (direccion, cuartos, banos, agua, luz, internet, televisores, material_techo, material_piso, tipo_vivienda, metros_cuadrados, habitantes, jardin, id_colonias) VALUES  ".
+        "('$direccion', '$cuartos', '$banos', '$agua', '$luz', '$internet', '$televisores', '$techo', '$piso', '$tipo', '$extension', '$habitantes', '$jardin', '$colonia') ";			
+
+    echo $consulta;
     $resultado = $conexion->prepare($consulta);
     $resultado->execute(); 
 

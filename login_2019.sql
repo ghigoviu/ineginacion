@@ -57,7 +57,8 @@ CREATE TABLE `viviendas` (
   `metros_cuadrados` int(11) COMMENT 'Area de la vivienda',
   `habitantes` varchar(100) COMMENT 'Personas que habitan en la vivienda',
   `jardin` varchar(11) COMMENT 'Si cuenta con jardin la vivienda',
-  `id_colonias` int(11) COMMENT 'Identificador de la colonia a la que pertenece la vivienda'
+  `id_colonias` int(11) COMMENT 'Identificador de la colonia a la que pertenece la vivienda',
+  FOREIGN KEY (`id_colonias`) REFERENCES `colonias`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --  
@@ -83,27 +84,20 @@ INSERT INTO `colonias` (`nombre`, `cp`, `municipio`, `estado`) VALUES
 -- Volcado de datos para la tabla `viviendas`
 -- 
 
-INSERT INTO `viviendas` (`nombre`, `cp`, `municipio`, `estado`) VALUES
-('Morelos', '62398', 'Jiutepec',  'Morelos'),
-('Otilio Montano', '62394', 'Jiutepec',  'Morelos'),
-('Centro',  '62392', 'Jiutepec',  'Morelos'),
-('Centro',  '62398', 'Cuernavaca',  'Morelos'),
-('El empleado',  '62399', 'Cuernavaca',  'Morelos');
-
 --
 -- Volcado de datos para la tabla `viviendas`
 -- 
 
 INSERT INTO `viviendas` (`direccion`, `cuartos`, `banos`, `agua`, `luz`, `internet`, `televisores`, 
-  `material_techo`, `material_piso`, `tipo_vivienda`, `metros_cuadrados`, `habitantes`, `jardin`) VALUES
-('And 127 #24', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 20, 5, 'NO'),
-('Fco. Marquez #22', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'LOZA', 'CASA', 30, 5, 'SI'),
-('And 107 #102', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 20, 5, 'NO'),
-('Benito Juarez #130', 4, 2,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 40, 5, 'NO'),
-('Plan de Ayala #41', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'LOZA', 'CASA',20, 5, 'NO'),
-('Calzada de los reyes #32', 3, 2,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'LOZA', 'CASA', 40, 5, 'SI'),
-('Degollado #88', 1, 1,  'SI', 'SI', 'SI', 1, 'LAMINA', 'CEMENTO', 'CASA', 10, 5, 'NO'),
-('Miguel Aleman #33', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 20, 5, 'SI');
+  `material_techo`, `material_piso`, `tipo_vivienda`, `metros_cuadrados`, `habitantes`, `jardin`, `id_colonias`) VALUES
+('And 127 #24', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 20, 5, 'NO', 4),
+('Fco. Marquez #22', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'LOZA', 'CASA', 30, 5, 'SI', 6),
+('And 107 #102', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 20, 5, 'NO', 8),
+('Benito Juarez #130', 4, 2,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 40, 5, 'NO', 9),
+('Plan de Ayala #41', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'LOZA', 'CASA',20, 5, 'NO', 4),
+('Calzada de los reyes #32', 3, 2,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'LOZA', 'CASA', 40, 5, 'SI', 6),
+('Degollado #88', 1, 1,  'SI', 'SI', 'SI', 1, 'LAMINA', 'CEMENTO', 'CASA', 10, 5, 'NO', 8),
+('Miguel Aleman #33', 2, 1,  'SI', 'SI', 'SI', 1, 'CEMENTO', 'CEMENTO', 'CASA', 20, 5, 'SI', 9);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

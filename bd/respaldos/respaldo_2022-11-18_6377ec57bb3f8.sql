@@ -42,17 +42,24 @@ CREATE TABLE `usuarios` (
   `id_usuario_superior` int(11) DEFAULT NULL COMMENT 'Identificador del Jefe del usuario',
   `password` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO usuarios VALUES
-("20","Jhony","7775657722","colab@mail.com","Coordinador","","fe01ce2a7fbac8fafaed7c982a04e229"),
-("40","Juan","7775657723","demo@mail.com","Censador","","demo"),
-("50","Ronaldo","7775674557","vrick_derck@hotmail.com","Censador","","827ccb0eea8a706c4c34a16891f84e7b"),
-("61","Rodrigo","7774565888","cbro172663@upemor.edu.mx","Censador","","bfd59291e825b5f2bbf1eb76569f8fe7"),
-("72","Abner","7774561010","abner@mail.com","Coordinador","","d41d8cd98f00b204e9800998ecf8427e");
+("2","Jhony","7775657722","colab@mail.com","Censador","","fe01ce2a7fbac8fafaed7c982a04e229"),
+("3","Juan","7775657723","demo@mail.com","Censador","","demo"),
+("10","Ronaldo","7775674557","vrick_derck@hotmail.com","Coordinador","","827ccb0eea8a706c4c34a16891f84e7b"),
+("11","Rodrigo","7774565888","cbro172663@upemor.edu.mx","Censador","","bfd59291e825b5f2bbf1eb76569f8fe7"),
+("12","Abner","7774561010","abner@mail.com","Coordinador","","d41d8cd98f00b204e9800998ecf8427e"),
+("20","Jhony","7775657722","colab@mail.com","Coordinador","0","fe01ce2a7fbac8fafaed7c982a04e229"),
+("40","Juan","7775657723","demo@mail.com","Censador","0","demo"),
+("50","Ronaldo","7775674557","vrick_derck@hotmail.com","Censador","0","827ccb0eea8a706c4c34a16891f84e7b"),
+("61","Rodrigo","7774565888","cbro172663@upemor.edu.mx","Censador","0","bfd59291e825b5f2bbf1eb76569f8fe7"),
+("72","Abner","7774561010","abner@mail.com","Coordinador","0","d41d8cd98f00b204e9800998ecf8427e");
  
  
+
+
 CREATE TABLE `viviendas` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador de la vivienda',
   `direccion` varchar(100) DEFAULT NULL COMMENT 'De que es esta hecho el piso de la vivienda',
@@ -69,16 +76,20 @@ CREATE TABLE `viviendas` (
   `habitantes` varchar(100) DEFAULT NULL COMMENT 'Personas que habitan en la vivienda',
   `jardin` varchar(11) DEFAULT NULL COMMENT 'Si cuenta con jardin la vivienda',
   `id_colonias` int(11) DEFAULT NULL COMMENT 'Identificador de la colonia a la que pertenece la vivienda',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`id`),
+  KEY `id_colonias` (`id_colonias`),
+  CONSTRAINT `viviendas_ibfk_1` FOREIGN KEY (`id_colonias`) REFERENCES `colonias` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+
 
 INSERT INTO viviendas VALUES
-("1","And 128 #24","2","1","SI","SI","SI","1","CEMENTO","CEMENTO","","20","5","NO",""),
+("1","And 127 #24","3","2","","SI","SI","0","1","CEMENTO","","0","20","SI",""),
 ("2","Fco. Marquez #22","2","1","SI","SI","SI","1","CEMENTO","LOZA","CASA","30","5","SI",""),
 ("3","And 107 #102","2","1","SI","SI","SI","1","CEMENTO","CEMENTO","CASA","20","5","NO",""),
 ("4","Benito Juarez #130","4","2","SI","SI","SI","1","CEMENTO","CEMENTO","CASA","40","5","NO",""),
 ("5","Plan de Ayala #41","2","1","SI","SI","SI","1","CEMENTO","LOZA","CASA","20","5","NO",""),
 ("6","Calzada de los reyes #32","3","2","SI","SI","SI","1","CEMENTO","LOZA","CASA","40","5","SI",""),
+("7","Degollado #88","1","1","SI","SI","SI","1","LAMINA","CEMENTO","CASA","10","5","NO",""),
 ("8","Miguel Aleman #33","2","1","SI","SI","SI","1","CEMENTO","CEMENTO","CASA","20","5","SI","");
  
  
