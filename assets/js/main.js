@@ -1,6 +1,12 @@
- $(document).ready(function(){
-    tablaPersonas = $("#tablaPersonas").DataTable({
+$('#tablaPersonas tfoot th').each( function () {
+    var title = $(this).text();
+    $(this).html( '<input type="text" placeholder="Filtrar.." />' );
+} );
 
+$(document).ready(function(){
+    tablaPersonas = $("#tablaPersonas").DataTable({
+    dom: 'Bfrtip',
+    buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
     "language": {
         "lengthMenu": "Mostrar _MENU_ registros",
         "zeroRecords": "No se encontraron resultados",
@@ -15,8 +21,26 @@
             "sPrevious": "Anterior"
             },
         "sProcessing":"Procesando...",
-        }
-    });
+        },
+    "dom": 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
+    "responsive": false,
+    "language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+    },
+    "order": [[ 0, "desc" ]],
+    "initComplete": function () {
+        this.api().columns().every( function () {
+            var that = this;
+            $( 'input', this.footer() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                        .search( this.value )
+                        .draw();
+                }
+            });
+        })
+    }
+});
     
 $("#btnNuevo").click(function(){
     $("#formUsuarios").trigger("reset");
@@ -26,7 +50,7 @@ $("#btnNuevo").click(function(){
     $("#modalCreate").modal("show");        
     id=null;
     opcion = 1; //alta
-});    
+});
 
 var fila; //capturar la fila para editar o borrar el registro
     
